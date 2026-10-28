@@ -111,14 +111,14 @@ function download(name, data, type) {
   const url = URL.createObjectURL(new Blob([data], {type}));
   const a = document.createElement('a'); a.href = url; a.download = name; document.body.append(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  $('#export-dialog').close(); toast(`Exported ${visible.length} entries.`);
+  $('#export-dialog').close(); toast(`Exported ${visible.length} ${visible.length === 1 ? 'entry' : 'entries'}.`);
 }
 $('#download-bib').addEventListener('click', () => download('awesome-basketball.bib', visible.map(toBibtex).join('\n\n') + '\n', 'text/plain;charset=utf-8'));
 $('#download-json').addEventListener('click', () => download('awesome-basketball.json', JSON.stringify({...catalog, filters:{...state}, papers:visible},null,2) + '\n', 'application/json;charset=utf-8'));
 $('#stats-button').addEventListener('click', () => {
   const counts = years.map(year => ({year,count:papers.filter(p=>p.year===year).length}));
   const max = Math.max(...counts.map(g=>g.count));
-  $('#stats-bars').innerHTML = counts.map(g => `<button type="button" class="stats-row" data-year="${g.year}" aria-label="Show ${g.count} entries from ${g.year}"><span>${g.year}</span><span class="stats-track"><span class="stats-fill" style="width:${g.count/max*100}%"></span></span><strong>${g.count}</strong></button>`).join('');
+  $('#stats-bars').innerHTML = counts.map(g => `<button type="button" class="stats-row" data-year="${g.year}" aria-label="Show ${g.count} ${g.count === 1 ? 'entry' : 'entries'} from ${g.year}"><span>${g.year}</span><span class="stats-track"><span class="stats-fill" style="width:${g.count/max*100}%"></span></span><strong>${g.count}</strong></button>`).join('');
   $('#stats-dialog').showModal();
 });
 $('#stats-bars').addEventListener('click', event => {
