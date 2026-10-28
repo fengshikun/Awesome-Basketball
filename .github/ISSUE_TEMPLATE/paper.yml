@@ -1,0 +1,29 @@
+name: Suggest a paper or correction
+description: Add basketball research or correct an existing record.
+title: '[Paper] '
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Paper or resource title
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Primary source URL
+      description: Author project page, publisher, proceedings, arXiv, or official repository.
+    validations:
+      required: true
+  - type: input
+    id: publication
+    attributes:
+      label: Venue and year
+      description: Clearly indicate preprint or project-only status when applicable.
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Basketball relevance and tasks
+      description: Describe the basketball subset, evaluation task, and any correction needed.
+    validations:
+      required: true

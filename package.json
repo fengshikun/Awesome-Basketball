@@ -1,0 +1,14 @@
+{
+  "name": "awesome-basketball",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A curated basketball video understanding research library and GitHub Pages website.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test scripts/catalog.test.mjs",
+    "dev": "node scripts/serve.mjs"
+  }
+}
